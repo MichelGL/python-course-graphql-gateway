@@ -18,6 +18,7 @@ class PlaceModel(TimeStampMixin, BaseModel):
     city: Optional[str] = Field(title="Название города")
     locality: Optional[str] = Field(title="Местонахождение")
 
+
 class UpdatePlaceModel(TimeStampMixin, BaseModel):
     """
     Модель для обновления места.

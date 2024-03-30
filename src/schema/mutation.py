@@ -47,6 +47,7 @@ class CreatePlace(graphene.Mutation):
 
         return CreatePlace(place=place, result=bool(place))
 
+
 class UpdatePlace(graphene.Mutation):
     """
     Функции для обновления объекта любимого места.
@@ -62,7 +63,14 @@ class UpdatePlace(graphene.Mutation):
     place = graphene.Field(Place)
 
     @staticmethod
-    def mutate(parent: Optional[dict], info: ResolveInfo, place_id: int, latitude: float | None = None, longitude: float | None = None, description: str | None = None) -> "UpdatePlace":
+    def mutate(
+        parent: Optional[dict],
+        info: ResolveInfo,
+        place_id: int,
+        latitude: float | None = None,
+        longitude: float | None = None,
+        description: str | None = None,
+    ) -> "UpdatePlace":
         """
         Обработка запроса для обновления объекта по его идентификатору.
         :param parent: Информация о родительском объекте (при наличии).
@@ -81,6 +89,7 @@ class UpdatePlace(graphene.Mutation):
         result, place = PlacesService().update_place(place_id, model)
 
         return UpdatePlace(result=result, place=place)
+
 
 class DeletePlace(graphene.Mutation):
     """
